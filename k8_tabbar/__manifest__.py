@@ -8,6 +8,8 @@
     'depends': ['base','web'],
     "installable": True,
     "auto_install": False,
+    'author': 'Cloud Open Technologies/K8 Team',
+    'category': 'Services',
     "assets": {
         "web.assets_backend": [
            "k8_tabbar/static/src/**/*",
