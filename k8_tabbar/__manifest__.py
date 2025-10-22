@@ -17,6 +17,7 @@
     },
     "images": [
         'static/description/image.jpg'
-    ]
+    ],
+    'license': 'LGPL-3'
             
 }
