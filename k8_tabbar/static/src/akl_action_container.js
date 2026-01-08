@@ -73,11 +73,11 @@ patch(ActionContainer.prototype, {
             var actionStack = action_info.__info__.state.actionStack.filter(item => item.action != 'menu');
             if (actionStack.length && actionStack[0].action) {
                 action = actionStack[0].action;
-                this.action_service.doAction(action, {'clearBreadcrumbs': true});
+                this.action_service.doAction(action, { 'clearBreadcrumbs': true });
                 return
             }
-        } 
-        const url = _router.stateToUrl(action_info.__info__.state);
+        }
+        const url = stateToUrl(action_info.__info__.state);
         browser.history.pushState({}, "", url);
         this.render();
     },
