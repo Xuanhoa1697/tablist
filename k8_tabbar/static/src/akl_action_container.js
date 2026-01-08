@@ -7,6 +7,7 @@ import { browser } from '@web/core/browser/browser';
 import { useService } from '@web/core/utils/hooks';
 import {
     router as _router,
+    stateToUrl
 } from '@web/core/browser/router';
 patch(ActionContainer.prototype, {
     setup() {
