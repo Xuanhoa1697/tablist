@@ -96,18 +96,13 @@
                             display: none;
                         }
 
-                        &:hover {
-                            background-color: #ff5722;
-                            color: #fff;
-                        }
-
                         svg {
                             margin-top: -2px;
                         }
                     }
 
                     &.active {
-                        background-color: #f6f6f6;
+                        background-color: #e9e9e9;
                     }
                 }
             }
@@ -234,6 +229,30 @@
 
     .dropdown-menu {
         z-index: 1000;
+    }
+
+    .akl_tab_contextmenu {
+        position: fixed;
+        z-index: 1060;
+        min-width: 160px;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        padding: 4px 0;
+        font-size: 14px;
+        line-height: 1.4;
+
+        .akl_tab_contextmenu_item {
+            padding: 6px 16px;
+            cursor: pointer;
+            white-space: nowrap;
+            user-select: none;
+
+            &:hover {
+                background-color: #f6f6f6;
+            }
+        }
     }
 }
 

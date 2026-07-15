@@ -14,11 +14,7 @@ import { ReportAction } from '@web/webclient/actions/reports/report_action';
 import { UPDATE_METHODS } from '@web/core/orm_service';
 import { CallbackRecorder } from '@web/search/action_hook';
 import { ControlPanel } from '@web/search/control_panel/control_panel';
-import {
-  PATH_KEYS,
-  router as _router,
-  stateToUrl,
-} from '@web/core/browser/router';
+import { PATH_KEYS, router as _router } from "@web/core/browser/router";
 import {
   Component,
   markup,
@@ -469,7 +465,7 @@ export function makeActionManager(env, router = _router) {
             return controller.props?.type === 'form';
           },
           get url() {
-            return stateToUrl(controller.state);
+            return _router.stateToUrl(controller.state);
           },
           onSelected() {
             restore(controller.jsId);
@@ -666,11 +662,11 @@ export function makeActionManager(env, router = _router) {
     if (typeof groupBy === 'string') {
       groupBy = [groupBy];
     }
-    const openFormView = (resId, { activeIds, mode, force } = {}) => {
+    const openFormView = (resId, { activeIds, readonly, force } = {}) => {
       if (target !== 'new') {
         if (_getView('form')) {
           return switchView('form', {
-            mode,
+            readonly,
             resId,
             resIds: activeIds,
           });
@@ -681,7 +677,7 @@ export function makeActionManager(env, router = _router) {
               res_model: action.res_model,
               views: [[false, 'form']],
             },
-            { props: { mode, resId, resIds: activeIds } }
+            { props: { readonly, resId, resIds: activeIds } }
           );
         }
       }
@@ -700,7 +696,7 @@ export function makeActionManager(env, router = _router) {
     });
     if (view.type === 'form') {
       if (target === 'new') {
-        viewProps.mode = 'edit';
+        viewProps.readonly = false;
         if (!viewProps.onSave) {
           viewProps.onSave = (record, params) => {
             if (params && params.closable) {
@@ -708,9 +704,6 @@ export function makeActionManager(env, router = _router) {
             }
           };
         }
-      }
-      if (action.flags && 'mode' in action.flags) {
-        viewProps.mode = action.flags.mode;
       }
     }
 
